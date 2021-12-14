@@ -19,7 +19,7 @@ jobs:
       with:
         go-version: 1.17
     
-    - name: golangci-lint
+    - name: run linter
       uses: golangci/golangci-lint-action@v2
       with:
         working-directory: ../LoanCalculator
@@ -29,3 +29,12 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+      
+      
+    - name: Deploy
+      uses: google-github-actions/deploy-appengine@v0.4.0
+      with:
+        working_directory: ../LoanCalculator/
+        deliverables: ./app.yaml
+        project_id: learned-shell-332900
+        credentials: '${{ secrets.GCP_SA_KEY }}'
