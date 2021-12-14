@@ -13,23 +13,6 @@ jobs:
       with:
         go-version: 1.17 
       
-    - name: golangci-lint
-      uses: golangci/golangci-lint-action@v2
-      with:
-        working-directory: ./LoanCalculator/
-      
     - name: Test
       working-directory: ./LoanCalculator/go
       run: go test
-
-    - name: Build
-      working-directory: ./LoanCalculator/
-      run: go build main.go
-
-    - name: Deploy
-      uses: google-github-actions/deploy-appengine@v0.4.0
-      with:
-        working_directory: ./LoanCalculator/
-        deliverables: ./app.yaml
-        project_id: learned-shell-332900
-        credentials: '${{ secrets.GCP_SA_KEY }}'
