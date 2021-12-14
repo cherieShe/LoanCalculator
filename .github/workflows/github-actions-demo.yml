@@ -2,7 +2,6 @@ name: GitHub Actions Demo
 on: [push]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -10,27 +9,27 @@ jobs:
     - uses: golangci/golangci-lint-action@v2
     
     - name: Set up Go
-    uses: actions/setup-go@v2
-    with:
-      go-version: 1.17
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17 
       
     - name: golangci-lint
-    uses: golangci/golangci-lint-action@v2
-    with:
-      working-directory: ./LoanCalculator/
+      uses: golangci/golangci-lint-action@v2
+      with:
+        working-directory: ./LoanCalculator/
       
     - name: Test
-    working-directory: ./LoanCalculator/
-    run: go test -v ./...
+      working-directory: ./LoanCalculator/
+      run: go test -v ./...
 
     - name: Build
-    working-directory: ./LoanCalculator/
-    run: go build -v ./...
+      working-directory: ./LoanCalculator/
+      run: go build -v ./...
 
     - name: Deploy
-    uses: google-github-actions/deploy-appengine@v0.4.0
-    with:
-    working_directory: ./LoanCalculator/
-    deliverables: ./app.yaml
-    project_id: learned-shell-332900
-    credentials: '${{ secrets.GCP_SA_KEY }}'
+      uses: google-github-actions/deploy-appengine@v0.4.0
+      with:
+        working_directory: ./LoanCalculator/
+        deliverables: ./app.yaml
+        project_id: learned-shell-332900
+        credentials: '${{ secrets.GCP_SA_KEY }}'
