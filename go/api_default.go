@@ -12,7 +12,7 @@
 	 "net/http"
 	 "encoding/json"
 	 "io/ioutil"
-	 // "fmt"
+	 "fmt"
 	 "math"
  )
  
@@ -77,7 +77,9 @@
  
 	 requestBodyBytes, _ := ioutil.ReadAll(r.Body)
 	 var newPerson CalculateloanBody
-	 json.Unmarshal(requestBodyBytes, &newPerson)// 
+	//  json.Unmarshal(requestBodyBytes, &newPerson)// 
+	 err1 := json.Unmarshal(requestBodyBytes, &newPerson)
+	fmt.Println(err1) 
  //1.convert request body byte to CalculateloanBody type 
  //2.and assign properties values to newPerson
  
@@ -85,13 +87,12 @@
 	 
 	 
  
-	 var res LoanRepayments
-	 res = calculate(newPerson)
+	//  var res LoanRepayments
+	 res := calculate(newPerson)
 	 jresponse,_:=json.Marshal(&res) //convert CalculateloanBody type to string for sending back
  
-	   w.Write(jresponse)
- 
- 
+	 err2, _ := w.Write(jresponse)
+	   fmt.Println(err2) 
  
  }
  
