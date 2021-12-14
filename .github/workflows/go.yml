@@ -22,7 +22,7 @@ jobs:
     - name: golangci-lint
       uses: golangci/golangci-lint-action@v2
       with:
-        working-directory: ./LoanCalculator
+        working-directory: ../LoanCalculator
     
     - name: Build
       run: go build -v ./...
