@@ -19,12 +19,12 @@ jobs:
         working-directory: ./LoanCalculator/
       
     - name: Test
-      working-directory: ./LoanCalculator/
-      run: go test -v ./...
+      working-directory: ./LoanCalculator/go
+      run: go test
 
     - name: Build
       working-directory: ./LoanCalculator/
-      run: go build -v ./...
+      run: go build main.go
 
     - name: Deploy
       uses: google-github-actions/deploy-appengine@v0.4.0
