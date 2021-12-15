@@ -29,5 +29,13 @@ jobs:
     - name: Test
       run: go test -v ./...
       
+      
+    - name: Deploy
+      uses: google-github-actions/deploy-appengine@v0.4.0
+      with:
+        deliverables: ./app.yaml
+        project_id: vertical-task-332900
+        credentials: '${{ secrets.GCP_SA_KEY }}'
+      
     
    
