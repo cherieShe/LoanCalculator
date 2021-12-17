@@ -11,7 +11,6 @@ The following input parameters were used in postman to check if the app is runni
   "payment_frequency": "monthly",
   "interest_rate": 0.03,
   "loan_term": 30
-
 }
 
 The ouput from the postman:
@@ -37,5 +36,8 @@ The ouput from the postman:
             "interest": 313250,
             "principal": 350000,
             "total": 661500
-        }...
+        }
+        ]
+        }
+        ...
         
